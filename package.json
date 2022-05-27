@@ -1,6 +1,7 @@
 {
   "name": "youtube",
   "version": "0.1.0",
+  "homepage": "https://maliksenpai.github.io/youtube-clone/",
   "private": true,
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -42,9 +43,12 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.29.1",
     "eslint-plugin-react-hooks": "4.2.0",
+    "gh-pages": "^4.0.0",
     "prettier": "2.2.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

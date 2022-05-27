@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
 import { app } from './index';
@@ -58,7 +58,7 @@ export const App = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <BrowserRouter>
+            <HashRouter>
                 {loading ? (
                     <MainLoading />
                 ) : (
@@ -73,7 +73,7 @@ export const App = () => {
                         </Routes>
                     </>
                 )}
-            </BrowserRouter>
+            </HashRouter>
             <Dialog
                 open={openVerifiedDialog}
                 onClose={() => setOpenVerifiedDialog(false)}

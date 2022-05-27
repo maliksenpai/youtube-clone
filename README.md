@@ -1,3 +1,25 @@
+# Youtube Clone
+
+This is a youtube clone. You can visit with this link: https://maliksenpai.github.io/youtube-clone/
+
+## Features
+
+<ul>
+<li> Auth </li>
+<li> Video Player</li>
+<li> Comment </li>
+<li> Video Upload </li>
+<li> React Router </li>
+<li> React Redux with Toolkit</li>
+<li> Firebase </li>
+<li> Pagination </li>
+</ul>
+
+## Screenshots
+
+![img.png](img.png)
+![img_1.png](img_1.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
