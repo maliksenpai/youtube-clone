@@ -13,6 +13,7 @@ This is a youtube clone. You can visit with this link: https://maliksenpai.githu
 <li> React Redux with Toolkit</li>
 <li> Firebase </li>
 <li> Pagination </li>
+<li> Responsive Design </li>
 </ul>
 
 ## Screenshots
