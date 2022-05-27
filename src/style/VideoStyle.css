@@ -21,7 +21,8 @@
 }
 
 .videoPlayerDurationSlider{
-
+    padding: 0 !important;
+    margin-bottom: -0.5vh;
 }
 
 .videoPlayerDurationSlider .MuiSlider-thumb{

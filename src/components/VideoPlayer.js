@@ -70,13 +70,12 @@ export const VideoPlayer = (props) => {
                     />
                 </div>
                 <div className={'videoPlayerBottom'}>
-                    <div className={'videoPlayerDurationSlider'}>
-                        <Slider
-                            sx={{ width: '100%', p: 0, color: 'red' }}
-                            value={durationPercent}
-                            onChange={handleChangeDuration}
-                        />
-                    </div>
+                    <Slider
+                        className={'videoPlayerDurationSlider'}
+                        sx={{ width: '100%', p: 0, color: 'red' }}
+                        value={durationPercent}
+                        onChange={handleChangeDuration}
+                    />
                     <div className={'videoPlayerControlPanel'}>
                         <div className={'videoPlayerControlPanelSection'}>
                             <IconButton title={playing ? 'Stop' : 'Play'} onClick={handleStopAndResume}>
