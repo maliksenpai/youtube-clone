@@ -68,7 +68,8 @@ export const LoginPage = () => {
                     height={'90vh'}
                 >
                     <Box width={'40vw'} p={1}>
-                        If you do not have an account, you will be automatically redirected to the registration screen.
+                        If you do not have an account, it will be created automatically. To activate your account, you
+                        can activate your account by sending an e-mail to your e-mail address.
                     </Box>
                     <Box width={'40vw'} p={1}>
                         <TextField
