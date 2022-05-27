@@ -64,8 +64,12 @@ export const LoginPage = () => {
                     alignItems={'center'}
                     justifyContent={'center'}
                     flexDirection={'column'}
+                    textAlign={'center'}
                     height={'90vh'}
                 >
+                    <Box width={'40vw'} p={1}>
+                        If you do not have an account, you will be automatically redirected to the registration screen.
+                    </Box>
                     <Box width={'40vw'} p={1}>
                         <TextField
                             fullWidth
