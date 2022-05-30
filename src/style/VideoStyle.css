@@ -90,8 +90,12 @@
     position: relative;
     object-fit: fill;
     border-radius: 2%;
-    width: 100%;
+    width: auto;
     height: 250px;
+}
+
+.videoImg video{
+    object-fit: fill;
 }
 
 .videoImgSmall{
@@ -104,8 +108,12 @@
     float: left;
     clear:left;
     margin-right:8px;
-    width: 30%;
+    width: auto;
     min-width: 200px;
+}
+
+.videoImgSmall video{
+    object-fit: fill;
 }
 
 .videoImgSmall:after{

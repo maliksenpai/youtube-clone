@@ -2,12 +2,14 @@ import { Avatar, Box, Card, CircularProgress, Grid, Typography, useMediaQuery } 
 import { Person } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import '../style/VideoStyle.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { UnStyledLink } from './UnstyledLink';
+import ReactPlayer from 'react-player';
 
 export const VideoPreviewComponent = ({ video, isSuggestVideo }) => {
     const [videoLoading, setVideoLoading] = useState(true);
     const isSmall = useMediaQuery('(max-width:900px)');
+    const videoRef = useRef();
 
     return (
         <div>
@@ -15,10 +17,16 @@ export const VideoPreviewComponent = ({ video, isSuggestVideo }) => {
                 <Card elevation={0}>
                     <div className={`videoImgDiv ${isSmall && isSuggestVideo && 'videoImgDivSmall'}`}>
                         {videoLoading && <CircularProgress className={'videoImg'} color={'secondary'} />}
-                        <video
+                        <ReactPlayer
+                            ref={videoRef}
                             className={isSmall && isSuggestVideo ? 'videoImgSmall' : 'videoImg'}
-                            src={video.data().url}
-                            onLoadedData={() => setVideoLoading(false)}
+                            url={video.data().url}
+                            paused={'true'}
+                            width={'100%'}
+                            onLoadedData={() => {
+                                setVideoLoading(false);
+                                videoRef.current.seekTo(0);
+                            }}
                         />
                         <div className={isSmall && isSuggestVideo ? 'videoDurationTextSmall' : 'videoDurationText'}>
                             {video.data().duration}
