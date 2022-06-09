@@ -20,6 +20,8 @@ This is a youtube clone. You can visit with this link: https://maliksenpai.githu
 
 ![img.png](img.png)
 ![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 # Getting Started with Create React App
 
