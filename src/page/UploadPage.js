@@ -1,5 +1,4 @@
 import Dropzone from 'react-dropzone';
-//import { uploadVideo } from '../data/FirebaseVideo';
 import { useState } from 'react';
 import { useValidatableForm } from 'comfort-react';
 import { Box, Container, Grid, LinearProgress, Typography } from '@mui/material';

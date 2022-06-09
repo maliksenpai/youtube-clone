@@ -16,7 +16,7 @@ export const VideoPreviewComponent = ({ video, isSuggestVideo }) => {
             <Link className={'videoLink'} to={`/video/${video.id}`}>
                 <Card elevation={0}>
                     <div className={`videoImgDiv ${isSmall && isSuggestVideo && 'videoImgDivSmall'}`}>
-                        {videoLoading && <CircularProgress className={'videoImg'} color={'secondary'} />}
+                        {videoLoading && <CircularProgress color={'secondary'} />}
                         <ReactPlayer
                             ref={videoRef}
                             className={isSmall && isSuggestVideo ? 'videoImgSmall' : 'videoImg'}

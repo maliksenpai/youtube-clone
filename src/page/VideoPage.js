@@ -11,7 +11,9 @@ import { Send } from '@mui/icons-material';
 import { addNewComment, getCommentsFromVideo } from '../data/FirebaseComments';
 import { VideoPreviewComponent } from '../components/VideoPreviewComponent';
 import { VideoSearchArea } from '../view/VideoSearchArea';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addVideoHistory } from '../data/FirebaseVideoHistory';
+import { updateDataUser } from '../redux/UserRedux';
 
 const rules = [
     {
@@ -25,6 +27,7 @@ export const VideoPage = () => {
     const [videoData, setVideoData] = useState(null);
     const [suggestVideos, setSuggestVideos] = useState(null);
     const userReducer = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
     const [comments, setComments] = useState(null);
     const [loadingInput, setLoadingInput] = useState(false);
     const isSmall = useMediaQuery('(max-width:600px)');
@@ -60,9 +63,17 @@ export const VideoPage = () => {
             setVideoData(value.data());
             getCommentsFromVideo({ id }).then((comments) => setComments(comments));
             getSuggestVideos({ currentVideo: value }).then((newSuggestVideos) => setSuggestVideos(newSuggestVideos));
+            addVideoHistory({
+                videoId: value.data().id,
+                userId: userReducer.uid,
+                historyVideos: userReducer.historyVideos,
+            }).then((value) => {
+                const copyUser = { ...userReducer };
+                copyUser.historyVideos = value;
+                dispatch(updateDataUser(copyUser));
+            });
         });
-    }, []);
-
+    }, [id]);
     return (
         <Grid container flexDirection={'row'} gap={1} columns={13} px={5} pt={2} justifyContent={'center'}>
             <VideoSearchArea />
@@ -76,6 +87,9 @@ export const VideoPage = () => {
                                 uploaderId={videoData.uploaderId}
                                 description={videoData.description}
                                 title={videoData.title}
+                                id={videoData.id}
+                                videoKey={id}
+                                likeCount={videoData.likeCount}
                             />
                         </>
                     ) : (

@@ -91,7 +91,7 @@
     object-fit: fill;
     border-radius: 2%;
     width: auto;
-    height: 250px;
+    height: 200px !important;
 }
 
 .videoImg video{
@@ -109,6 +109,7 @@
     clear:left;
     margin-right:8px;
     width: auto;
+    height: 150px !important;
     min-width: 200px;
 }
 

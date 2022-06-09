@@ -3,9 +3,9 @@ import { Logout, Person, Settings } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { UnStyledLink } from '../components/UnstyledLink';
 import { LoginButton } from '../components/LoginButton';
-import { MenuButton } from 'comfort-react';
+import { Button, MenuButton } from 'comfort-react';
 import { logoutUser } from '../data/FirebaseUser';
-import { updateUser } from '../redux/UserRedux';
+import { clearUser } from '../redux/UserRedux';
 
 export const MainAppBar = () => {
     const userReducer = useSelector((state) => state.userReducer);
@@ -13,7 +13,7 @@ export const MainAppBar = () => {
 
     const handleClickMenuItem = (index) => {
         if (index === 2) {
-            logoutUser().then(() => dispatch(updateUser({ uid: null, email: null, emailVerified: null })));
+            logoutUser().then(() => dispatch(clearUser()));
         }
     };
 
@@ -56,13 +56,18 @@ export const MainAppBar = () => {
     });
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position={'static'} style={{ backgroundColor: 'white' }}>
-                <Toolbar>
+            <AppBar style={{ backgroundColor: 'white' }}>
+                <Toolbar sx={{ zIndex: 1000 }}>
                     <Typography color={'red'} sx={{ flexGrow: 1 }}>
                         <UnStyledLink to={'/'}>Youtube Clone</UnStyledLink>
                     </Typography>
                     {userReducer.uid ? (
-                        <Box>
+                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                            <UnStyledLink to={'/upload'}>
+                                <Button variant={'outlined'} color={'primary'}>
+                                    Upload Video
+                                </Button>
+                            </UnStyledLink>
                             <MenuButton isIconButton={true} menuChildren={menuItemsJsx}>
                                 <Avatar>
                                     <Person />
@@ -70,7 +75,14 @@ export const MainAppBar = () => {
                             </MenuButton>
                         </Box>
                     ) : (
-                        <Box>
+                        <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                            <Box pr={1}>
+                                <UnStyledLink to={'/login'}>
+                                    <Button variant={'outlined'} color={'primary'}>
+                                        Upload Video
+                                    </Button>
+                                </UnStyledLink>
+                            </Box>
                             <UnStyledLink to={'/login'}>
                                 <LoginButton />
                             </UnStyledLink>

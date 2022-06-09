@@ -14,11 +14,13 @@ export const addVideoDatabase = async ({ title, description, duration, id, fileN
         id: id,
         title: title,
         uploader: currentUser.currentUser.email,
+        uploaderId: currentUser.currentUser.uid,
         duration: duration,
         description: description,
         fileName: fileName,
         search: `${title} ${description}`,
         url: downloadUri,
+        likedCount: 0,
     });
     return response;
 };
