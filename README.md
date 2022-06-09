@@ -8,6 +8,9 @@ This is a youtube clone. You can visit with this link: https://maliksenpai.githu
 <li> Auth </li>
 <li> Video Player</li>
 <li> Comment </li>
+<li> Subscribe </li>
+<li> Like Video </li>
+<li> Video History </li>  
 <li> Video Upload </li>
 <li> React Router </li>
 <li> React Redux with Toolkit</li>
