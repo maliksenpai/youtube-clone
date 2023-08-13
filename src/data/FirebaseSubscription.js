@@ -1,7 +1,7 @@
-import { app } from '../index';
+import { firebaseApp } from '../Main';
 
 export const subscribeUser = async ({ subscribeUserId, subscriptionCount, userId, subscriptions }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const copySubscriptions = [...subscriptions];
     copySubscriptions.push(subscribeUserId);
     await database
@@ -13,7 +13,7 @@ export const subscribeUser = async ({ subscribeUserId, subscriptionCount, userId
 };
 
 export const unsubscribeUser = async ({ subscribeUserId, subscriptionCount, userId, subscriptions }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const copySubscriptions = [...subscriptions].filter((element) => element !== subscribeUserId);
     await database
         .collection('users')
@@ -24,7 +24,7 @@ export const unsubscribeUser = async ({ subscribeUserId, subscriptionCount, user
 };
 
 export const getSubscriptionVideos = async ({ subscriptions }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const response = await database.collection('videos').where('uploaderId', 'in', subscriptions).get();
     return response.docs;
 };

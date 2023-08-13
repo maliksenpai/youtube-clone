@@ -20,7 +20,7 @@ const firebaseConfig = {
     appId: '1:1081827213163:web:ff80774386d13089fbd62e',
 };
 
-export const app = firebase.initializeApp(firebaseConfig);
+export const firebaseApp = firebase.initializeApp(firebaseConfig);
 const store = configureStore({
     reducer: {
         userReducer: userSlicer.reducer,

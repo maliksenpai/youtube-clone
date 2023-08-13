@@ -1,15 +1,15 @@
-import { app } from '../index';
+import { firebaseApp } from '../Main';
 import { createId } from '../utils/idGenerator';
 
 export const getCommentsFromVideo = async ({ id }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const response = await database.collection('comments').where('videoId', '==', id).get();
     return response.docs;
 };
 
 export const addNewComment = async ({ message, videoId }) => {
-    const database = app.firestore();
-    const auth = app.auth();
+    const database = firebaseApp.firestore();
+    const auth = firebaseApp.auth();
     const comment = {
         id: createId(),
         message: message,

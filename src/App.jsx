@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
-import { app } from './index';
+import { firebaseApp } from './Main.jsx';
 import { clearUser, updateUser } from './redux/UserRedux';
 import { MainAppBar } from './view/MainAppBar';
 import { MainLoading } from './view/MainLoading';
@@ -25,7 +25,7 @@ export const App = () => {
     const [openVerifiedDialog, setOpenVerifiedDialog] = useState(false);
 
     useEffect(() => {
-        app.auth().onAuthStateChanged((user) => {
+        firebaseApp.auth().onAuthStateChanged((user) => {
             if (user) {
                 dispatch(updateUser({ uid: user.uid, email: user.email, emailVerified: user.emailVerified }));
                 dispatch(getDataForUser({ id: user.uid }));
@@ -38,7 +38,7 @@ export const App = () => {
         if (userReducer.emailVerified !== null) {
             if (!userReducer.emailVerified) {
                 dispatch(clearUser());
-                app.auth().signOut();
+                firebaseApp.auth().signOut();
                 setOpenVerifiedDialog(true);
             }
         }

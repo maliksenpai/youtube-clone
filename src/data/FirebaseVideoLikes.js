@@ -1,7 +1,7 @@
-import { app } from '../index';
+import { firebaseApp } from '../Main';
 
 export const likeVideo = async ({ videoKey, videoId, likeCount, userId, likedVideos }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const copyLikedVideos = [...likedVideos];
     copyLikedVideos.push(videoId);
     console.log(videoKey);
@@ -14,7 +14,7 @@ export const likeVideo = async ({ videoKey, videoId, likeCount, userId, likedVid
 };
 
 export const dislikeVideo = async ({ videoKey, videoId, likeCount, userId, likedVideos }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const copyLikedVideos = [...likedVideos].filter((element) => element !== videoId);
     await database
         .collection('videos')
@@ -25,7 +25,7 @@ export const dislikeVideo = async ({ videoKey, videoId, likeCount, userId, liked
 };
 
 export const getLikedVideos = async ({ likedVideos }) => {
-    const database = app.firestore();
+    const database = firebaseApp.firestore();
     const response = await database.collection('videos').where('id', 'in', likedVideos).get();
     return response.docs;
 };
